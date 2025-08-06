@@ -1,0 +1,71 @@
+ai_tutor/
+├── app/
+│   ├── __init__.py
+│   ├── main.py                  # FastAPI entrypoint
+│   ├── api/
+│   │   ├── __init__.py
+│   │   ├── routes_users.py      # All user endpoints
+│   │   ├── routes_chats.py      # Chat, messaging endpoints
+│   │   └── routes_ws.py         # WebSocket endpoints
+│   ├── models/
+│   │   ├── __init__.py
+│   │   ├── user.py              # SQLAlchemy/Pydantic User
+│   │   ├── chat.py              # Chat message model
+│   │   └── ...                  # More as needed
+│   ├── schemas/
+│   │   ├── __init__.py
+│   │   ├── user.py              # Pydantic user schema
+│   │   ├── chat.py              # Pydantic chat schema
+│   │   └── ...  
+│   ├── crud/
+│   │   ├── __init__.py
+│   │   ├── user.py              # DB ops for users
+│   │   ├── chat.py              # DB ops for chats
+│   │   └── ...  
+│   ├── core/
+│   │   ├── __init__.py
+│   │   ├── config.py            # Settings/env vars
+│   │   ├── security.py          # JWT/auth helpers
+│   │   ├── logging.py           # Logging setup
+│   │   └── ...  
+│   ├── db/
+│   │   ├── __init__.py
+│   │   ├── session.py           # DB/engine session
+│   │   └── base.py              # Base for models
+│   ├── services/
+│   │   ├── __init__.py
+│   │   ├── ai.py                # LLM/AI tutoring logic
+│   │   ├── chat_service.py      # Custom chat helpers
+│   │   └── ...  
+│   ├── background/
+│   │   ├── __init__.py
+│   │   ├── tasks.py             # Celery/background tasks
+│   │   └── ...  
+│   ├── dependencies/
+│   │   ├── __init__.py
+│   │   ├── db.py                # DB dependencies
+│   │   └── auth.py              # Auth dependencies
+│   └── metrics/
+│       ├── __init__.py
+│       ├── prometheus.py        # Prometheus integration
+│       └── opentelemetry.py     # Tracing
+├── tests/
+│   ├── __init__.py
+│   ├── test_users.py
+│   ├── test_chats.py
+│   ├── test_ws.py
+│   └── ...  
+├── migrations/
+│   └── ...                      # Alembic migration scripts
+├── docker/
+│   ├── Dockerfile
+│   ├── docker-compose.yml
+│   └── nginx.conf               # If using nginx reverse proxy
+├── scripts/
+│   ├── seed_data.py             # For populating DB with sample
+│   └── start.sh                 # Entrypoint script
+├── .env                         # Environment variables
+├── requirements.txt
+├── README.md
+├── .gitignore
+└── pyproject.toml               # Optional: for project metadata
