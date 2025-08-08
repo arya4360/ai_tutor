@@ -1,0 +1,13 @@
+fastapi[standard]
+pydantic
+logfire
+python-dotenv
+SQLAlchemy==2.0.13
+psycopg2==2.9.6
+asyncpg==0.28.0
+uvicorn==0.22.0
+greenlet
+alembic
+psycopg2-binary
+setuptools
+wheel

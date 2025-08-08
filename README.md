@@ -1,237 +1,98 @@
-# ai_tutor
-pet-project for ai tutor
-WEEK 1: FastAPI, Async, WebSockets – Foundations & API
-Day 1
+# AI Tutor
 
-Learning:
-FastAPI basics: App setup, routing, running servers.
-Milestone:
-Scaffold project repo.
-Create main.py; implement /healthz endpoint.
-Verify server runs locally.
-Your Notes:
-[ ]
-Day 2
+AI Tutor is a pet project designed to build a scalable, asynchronous backend using FastAPI. The project focuses on implementing features like user management, database integration, WebSocket communication, and observability while following best practices for modern backend development.
 
-Learning:
-Pydantic models in FastAPI, request/response validation.
-Milestone:
-Add /users endpoint (create/get).
-Integrate request/response models.
-Your Notes:
-[ ]
-Day 3
+## Project Goals
+- Build a robust backend using FastAPI.
+- Implement asynchronous database operations with SQLAlchemy and PostgreSQL.
+- Enable WebSocket communication for real-time features.
+- Integrate observability tools like Prometheus and Grafana.
+- Follow a structured 28-day learning and development plan.
 
-Learning:
-Async Postgres integration (SQLAlchemy or asyncpg).
-Milestone:
-Implement /chats endpoint (create/list).
-Store chats in Postgres/Supabase.
-Your Notes:
-[ ]
-Day 4
+## Features Implemented So Far
+1. **FastAPI Setup**:
+   - Basic FastAPI application with `/` and `/health` endpoints.
+   - Modular structure for scalability.
 
-Learning:
-Async endpoints, background tasks & error handling in FastAPI.
-Milestone:
-Async chat message processing with background handler.
-Your Notes:
-[ ]
-Day 5
+2. **User Management**:
+   - Pydantic models for request/response validation.
+   - CRUD operations for users using SQLAlchemy.
 
-Learning:
-Implement JWT Auth (login/signup) in FastAPI.
-Milestone:
-Secure endpoints with JWT.
-Add /login and /signup endpoints.
-Your Notes:
-[ ]
-Day 6
+3. **Database Integration**:
+   - PostgreSQL database integration using SQLAlchemy (async).
+   - Alembic for database migrations.
 
-Learning:
-WebSocket support in FastAPI (group chat basics).
-Milestone:
-Add /ws/chat WebSocket endpoint; test 2+ clients connecting.
-Your Notes:
-[ ]
-Day 7
+4. **Logging**:
+   - Integrated Logfire for centralized logging.
 
-Learning:
-WebSocket load testing (Locust, k6).
-Milestone:
-Simulate 200+ concurrent clients; fix any connection/scaling issues.
-Your Notes:
-[ ]
-WEEK 2: Deployment, Infra-as-Code, Observability
-Day 8
+5. **Environment Configuration**:
+   - `.env` file for managing environment variables securely.
 
-Learning:
-Docker & Docker Compose basics.
-Milestone:
-Write Dockerfile for app.
-Containerize FastAPI + DB; run with Compose.
-Your Notes:
-[ ]
-Day 9
+## Project Structure
+```
+ai_tutor/
+├── app/
+│   ├── api/                # API route definitions
+│   │   └── user_routes.py  # User-related endpoints
+│   ├── core/               # Core utilities and configurations
+│   │   ├── config.py       # Application settings
+│   │   ├── database.py     # Database setup and session management
+│   │   └── logging.py      # Logfire logging setup
+│   ├── models/             # Data models
+│   │   ├── database_models.py  # SQLAlchemy models
+│   │   └── user.py         # Pydantic models for user
+│   ├── repositories/       # Data access layer
+│   │   └── user_repository.py  # User repository for DB operations
+│   ├── main.py             # FastAPI application entry point
+│   └── .env                # Environment variables
+├── alembic/                # Database migrations
+├── requirements.txt        # Python dependencies
+├── pyproject.toml          # Project metadata
+└── README.md               # Project documentation
+```
 
-Learning:
-Terraform basics (init, providers, state).
-Milestone:
-Write simple Terraform to provision EC2.
-Your Notes:
-[ ]
-Day 10
+## How to Run
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd ai_tutor
+   ```
 
-Learning:
-Terraform modules for RDS, ECS, security basics.
-Milestone:
-Script infra for Postgres (RDS or local) and compute.
-Your Notes:
-[ ]
-Day 11
+2. Set up a virtual environment and install dependencies:
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate
+   pip install -r requirements.txt
+   ```
 
-Learning:
-Blue-Green & Canary deployments (strategy + simulated deploy).
-Milestone:
-Deploy two containers/services, switch traffic manually.
-Your Notes:
-[ ]
-Day 12
+3. Configure environment variables in `.env`:
+   ```env
+   LOGFIRE_API_KEY=your_logfire_key
+   POSTGRES_USER=your_postgres_user
+   POSTGRES_PASSWORD=your_postgres_password
+   POSTGRES_SERVER=localhost
+   POSTGRES_PORT=5432
+   POSTGRES_DB=your_database_name
+   ```
 
-Learning:
-Prometheus integration basics (Python client).
-Milestone:
-Expose /metrics for Prometheus scraping.
-Your Notes:
-[ ]
-Day 13
+4. Run the application:
+   ```bash
+   uvicorn app.main:app --reload
+   ```
 
-Learning:
-Grafana: connect to Prometheus, build dashboards.
-Milestone:
-View live metrics: user count, WebSocket conns, error rates, latency.
-Your Notes:
-[ ]
-Day 14
+5. Access the API documentation at `http://127.0.0.1:8000/docs`.
 
-Learning:
-Distributed tracing with OpenTelemetry (FastAPI).
-Milestone:
-Add sample traces for API/WebSocket; validate in Grafana/console.
-Your Notes:
-[ ]
-WEEK 3: Performance, Debugging, Reliability
-Day 15
+## Next Steps
+- Implement WebSocket communication for real-time features.
+- Add JWT authentication for secure endpoints.
+- Integrate Prometheus and Grafana for observability.
+- Containerize the application using Docker.
 
-Learning:
-Async optimization, profiling endpoints (py-spy, asyncio).
-Milestone:
-Profile chat endpoints and refactor any blocking code.
-Your Notes:
-[ ]
-Day 16
+## Learning Plan
+The project follows a structured 28-day learning plan, focusing on different aspects of backend development each day. Refer to `ai_tutor_Backend_28Day_Prep_Plan.csv` for detailed steps and milestones.
 
-Learning:
-Redis for caching and rate-limiting (aioredis).
-Milestone:
-Cache recent chats; implement simple rate limiting.
-Your Notes:
-[ ]
-Day 17
+## Contributing
+Contributions are welcome! Feel free to submit issues or pull requests.
 
-Learning:
-Graceful shutdown, failover handling (process signals, Docker restart).
-Milestone:
-Implement shutdown handlers; test restarting app without dropped chats.
-Your Notes:
-[ ]
-Day 18
-
-Learning:
-Background jobs (Redis-Queue or Celery basics).
-Milestone:
-Offload “AI chat analysis/moderation” to worker via Redis/Celery.
-Your Notes:
-[ ]
-Day 19
-
-Learning:
-Network packet tracing (Wireshark/tcpdump basics).
-Milestone:
-Capture traffic to DB/API; find major bottleneck.
-Your Notes:
-[ ]
-Day 20
-
-Learning:
-Real-time stress/load testing (k6/Locust advanced).
-Milestone:
-Load test API/WebSocket >500 clients; record and tune perf.
-Your Notes:
-[ ]
-Day 21
-
-Learning:
-Reliability: simulate DB/Redis failures, observe recovery.
-Milestone:
-Measure error handling, metrics under component restart.
-Your Notes:
-[ ]
-WEEK 4: Logging, Polish, Interview Prep
-Day 22
-
-Learning:
-LLM observability (LangSmith/Custom logging).
-Milestone:
-Add rich logs: prompt/response/latency for mock “AI tutor.”
-Your Notes:
-[ ]
-Day 23
-
-Learning:
-OSS/internal tool: contribute simple FastAPI plugin/CLI or make internal admin tool.
-Milestone:
-Submit PR or build and document CLI utility.
-Your Notes:
-[ ]
-Day 24
-
-Learning:
-Supabase: use as Postgres-as-a-Service.
-Milestone:
-Migrate DB connection to Supabase, test end-to-end.
-Your Notes:
-[ ]
-Day 25
-
-Learning:
-Competitive coding (3-5 problems on LeetCode/CodeChef).
-Milestone:
-Solve, discuss, update online profile for “bravado points.”
-Your Notes:
-[ ]
-Day 26
-
-Learning:
-Finalize observability stack end-to-end.
-Milestone:
-Grafana dashboards live: all metrics/traces/LLM logs visible.
-Your Notes:
-[ ]
-Day 27
-
-Learning:
-Polish project, docs, and system design. Rehearse presenting.
-Milestone:
-Write README/docs (features, arch, observability, infra).
-Dry-run project demo and interview/system design answers.
-Your Notes:
-[ ]
-Day 28
-
-Learning:
-Buffer/review: address any overflows, tough interview Qs.
-Milestone:
-Integrate/fix all pieces; final end-to-end test and documentation.
-Your Notes:
-[ ]
+## License
+This project is licensed under the MIT License.
